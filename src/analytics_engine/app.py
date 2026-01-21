@@ -4,7 +4,9 @@ import logging
 from datetime import datetime
 from typing import Optional
 
-from fastapi import Depends, FastAPI, HTTPException, Query
+import os
+
+from fastapi import Depends, FastAPI, HTTPException, Query, Request, Response
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
@@ -36,6 +38,38 @@ def _build_app(settings: Settings) -> FastAPI:
             {"name": "reports", "description": "Reporting endpoints for KPIs."},
         ],
     )
+
+    # Hardening (Phase 9): set basic security headers.
+    # Defaults are non-breaking for API-only services.
+    @app.middleware("http")
+    async def security_headers(request: Request, call_next) -> Response:
+        response = await call_next(request)
+
+        # Baselines
+        response.headers["X-Content-Type-Options"] = "nosniff"
+        response.headers["X-Frame-Options"] = "DENY"
+        response.headers["Referrer-Policy"] = "no-referrer"
+        response.headers["X-DNS-Prefetch-Control"] = "off"
+        response.headers["Permissions-Policy"] = (
+            "geolocation=(), microphone=(), camera=(), payment=(), usb=(), interest-cohort=()"
+        )
+        response.headers["Cross-Origin-Resource-Policy"] = os.getenv(
+            "CROSS_ORIGIN_RESOURCE_POLICY", "same-origin"
+        )
+
+        # Optional CSP (disabled by default to avoid surprises if HTML is ever served).
+        if os.getenv("SECURITY_ENABLE_CSP", "false").lower() == "true":
+            response.headers["Content-Security-Policy"] = os.getenv(
+                "SECURITY_CSP", "default-src 'none'; frame-ancestors 'none'; base-uri 'none'"
+            )
+
+        # Optional HSTS (only enable when behind HTTPS).
+        if os.getenv("SECURITY_ENABLE_HSTS", "false").lower() == "true":
+            response.headers["Strict-Transport-Security"] = os.getenv(
+                "SECURITY_HSTS", "max-age=15552000; includeSubDomains"
+            )
+
+        return response
 
     # CORS is optional but helpful for previews/dashboards.
     origins = settings.cors_origins()
