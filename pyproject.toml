@@ -1,0 +1,25 @@
+[project]
+name = "analytics-engine-c_car_platform"
+version = "0.0.0"
+description = "Analytics engine container (placeholder) for connected-car platform."
+requires-python = ">=3.11"
+dependencies = []
+
+[tool.black]
+line-length = 100
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.flake8]
+max-line-length = 100
+extend-ignore = ["E203", "W503"]
+exclude = [
+  ".git",
+  "__pycache__",
+  ".venv",
+  "venv",
+  ".pytest_cache",
+]
