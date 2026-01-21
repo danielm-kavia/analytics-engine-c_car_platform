@@ -1,1 +1,11 @@
 .file_activity_report.json
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+.pytest_cache/
+.mypy_cache/
+dist/
+build/
+*.egg-info/

@@ -3,7 +3,13 @@ name = "analytics-engine-c_car_platform"
 version = "0.0.0"
 description = "Analytics engine container (placeholder) for connected-car platform."
 requires-python = ">=3.11"
-dependencies = []
+dependencies = [
+  "fastapi==0.115.7",
+  "uvicorn==0.34.0",
+  "pydantic==2.10.6",
+  "pydantic-settings==2.2.1",
+  "asyncpg==0.29.0",
+]
 
 [tool.black]
 line-length = 100
