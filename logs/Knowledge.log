@@ -99,3 +99,36 @@
 2026-01-21 22:30:22,239 - Knowledge - INFO - [WEBSOCKET] Sent: Type=progress_update, Size: 240, Duration: 0ms
 2026-01-21 22:30:22,402 - Knowledge - INFO - Saving knowledge to Redis...
 2026-01-21 22:30:22,598 - Knowledge - INFO - Knowledge saved to Redis successfully
+2026-01-26 17:44:34,719 - Knowledge - INFO - Created shared MongoDB connection pool
+2026-01-26 17:44:35,041 - Knowledge - INFO - Starting Knowledge Graph processing with 20 threads
+2026-01-26 17:44:35,219 - Knowledge - INFO - Initial configuration: chunk_size=65536, max_cache_size=500
+2026-01-26 17:44:35,388 - Knowledge - INFO - Knowledge Graph concurrency configuration: workers=20, max_batch_size=10, max_concurrent_llm_calls=50
+2026-01-26 17:44:36,286 - Knowledge - INFO - 🔍 _load_persisted_knowledge called - checking for Redis optimization
+2026-01-26 17:44:36,448 - Knowledge - WARNING - ❌ load_from_redis method not found - Redis support not attached
+2026-01-26 17:44:36,634 - Knowledge - INFO - load persisted knowledge: begin
+2026-01-26 17:44:36,819 - Knowledge - INFO - Persisted knowledge files in /app/data/T0015/309902/b5494d3/analytics-engine-c_car_platform/.knowledge have been renamed to use .json
+2026-01-26 17:44:37,007 - Knowledge - INFO - Found code-base-name: https://github.com/danielm-kavia/analytics-engine-c_car_platform.git:kavia-main
+2026-01-26 17:44:37,175 - Knowledge - INFO - Found code_base: <app.utils.kg_build.knowledge.KnowledgeCodeBase object at 0x7ffaf6704e10>
+2026-01-26 17:44:37,434 - Knowledge - INFO - Found code-base-name: https://github.com/danielm-kavia/analytics-engine-c_car_platform.git:kavia-main
+2026-01-26 17:44:37,588 - Knowledge - INFO - Found code_base: <app.utils.kg_build.knowledge.KnowledgeCodeBase object at 0x7ffaf6704e10>
+2026-01-26 17:44:37,748 - Knowledge - INFO - persist ingested knowledge for /app/data/T0015/309902/b5494d3/analytics-engine-c_car_platform/README.md
+2026-01-26 17:44:38,124 - Knowledge - INFO - [MONGODB_OP] Completed: persist, Collection: file_info, Duration: 148ms
+2026-01-26 17:44:39,751 - Knowledge - INFO - [REDIS_OP] Completed: store_embedding, Key: README.md, Duration: 1450ms
+2026-01-26 17:44:39,907 - Knowledge - INFO - persist search terms embedding for README.md
+2026-01-26 17:44:40,066 - Knowledge - INFO - process ingested knowledge for /app/data/T0015/309902/b5494d3/analytics-engine-c_car_platform/README.md
+2026-01-26 17:44:40,228 - Knowledge - INFO - Loaded 1 files from persisted knowledge
+2026-01-26 17:44:40,399 - Knowledge - INFO - load persisted knowledge: end
+2026-01-26 17:44:40,591 - Knowledge - INFO - Redis support added with prefix knowledge:b5494d3:
+2026-01-26 17:44:40,784 - Knowledge - INFO - Starting knowledge initialization for ID: 5uK0wJ-b5494d3
+2026-01-26 17:44:40,960 - Knowledge - INFO - 🔍 Checking Redis for build_id: b5494d3
+2026-01-26 17:44:41,193 - Knowledge - INFO - 🔍 Full session ID: 5uK0wJ-b5494d3
+2026-01-26 17:44:41,443 - Knowledge - INFO - 🔍 Redis prefix will be: knowledge:b5494d3:
+2026-01-26 17:44:41,667 - Knowledge - INFO - 🔍 Using attached load_from_redis() method
+2026-01-26 17:44:41,865 - Knowledge - INFO - 🔍 Attempting to load knowledge from Redis...
+2026-01-26 17:44:42,073 - Knowledge - INFO - 🔍 Using derived instance_id for Redis lookup: b5494d3
+2026-01-26 17:44:42,289 - Knowledge - INFO - ✅ Redis cache found! Loading knowledge...
+2026-01-26 17:44:42,457 - Knowledge - INFO - ✅ Successfully loaded from Redis: 1 files
+2026-01-26 17:44:42,664 - Knowledge - INFO - ✅ Redis load complete: 1 files in 1.00s
+2026-01-26 17:44:42,860 - Knowledge - INFO - ⚡ Total Redis path: 1.00s (vs ~300s from disk)
+2026-01-26 17:44:43,029 - Knowledge - INFO - Saving knowledge to Redis...
+2026-01-26 17:44:43,219 - Knowledge - INFO - Knowledge saved to Redis successfully
